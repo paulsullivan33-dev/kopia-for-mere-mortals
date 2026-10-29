@@ -1,0 +1,29 @@
+# The notes file contains the line:
+#   "The marker for this file is MARKER-QUUX-7391-the-velvet-ledger"
+# If the repository held a readable copy of the file, grep would find it.
+
+$ grep -r "MARKER-QUUX-7391" $LAB/repo ; echo "grep exit code: $?"
+grep exit code: 1 (1 = not found anywhere)
+
+$ grep -rl "letter-to-a-friend" $LAB/repo ; echo "grep exit code: $?"
+grep exit code: 1 (1 = not even file names are readable)
+
+$ find $LAB/repo -type f | head -12
+/home/hatch/workspace/kopia-lab-work/repo/.shards
+/home/hatch/workspace/kopia-lab-work/repo/kopia.blobcfg.f
+/home/hatch/workspace/kopia-lab-work/repo/kopia.repository.f
+/home/hatch/workspace/kopia-lab-work/repo/q/ebc/0e572743cf028d510ec2f3869dc9f-s4202d9582775f55f146.f
+/home/hatch/workspace/kopia-lab-work/repo/q/0eb/033ce879d11c93d6167f5890bc853-sac101130e0c0be95146.f
+/home/hatch/workspace/kopia-lab-work/repo/q/a16/02c607f1dc92a51cf3b8f6a9b1a51-s699ab76cba0e7916146.f
+/home/hatch/workspace/kopia-lab-work/repo/q/ee1/46ab5a72de0067c329ac32739d24e-s8d30d865c7dcc9ac146.f
+/home/hatch/workspace/kopia-lab-work/repo/x/n0_/be646f5b48929c164dee3d3d6c6ff15f-s4202d9582775f55f146-c1.f
+/home/hatch/workspace/kopia-lab-work/repo/x/n0_/8343449424326515059c457c003814a7-sac101130e0c0be95146-c1.f
+/home/hatch/workspace/kopia-lab-work/repo/x/n0_/3c04f549ef8fb95c2f7a326426b791b1-s699ab76cba0e7916146-c1.f
+/home/hatch/workspace/kopia-lab-work/repo/x/n0_/72042696f49244cd5423fec854c81182-s8d30d865c7dcc9ac146-c1.f
+/home/hatch/workspace/kopia-lab-work/repo/_/log/_20261029180259_8cae_1793296979_1793296979_1_0104f456465eb4a543a6232a17087f4e.f
+
+# Wrong password test, using a separate throwaway config file:
+$ KOPIA_PASSWORD=wrong-password kopia --config-file=$LAB/wrong.config repository connect filesystem --path $LAB/repo
+failed to open repository: unable to create format manager: invalid repository password
+error connecting to repository: unable to create format manager: invalid repository password
+exit code: 1

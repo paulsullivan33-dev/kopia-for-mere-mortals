@@ -1,0 +1,37 @@
+$ kopia snapshot create $LAB/docs-src/documents
+Snapshotting root@htch-runtime:/home/hatch/workspace/kopia-lab-work/docs-src/documents ...
+Created snapshot with root k774ee3ab55fb879bce7f34bb3c854730 and ID 3e67e762dca844079167f1c9dfa544f3 in 0s
+Running full maintenance...
+GC found 0 unused contents (0 B)
+GC found 0 unused contents that are too recent to delete (0 B)
+GC found 9 in-use contents (236.2 KB)
+GC found 2 in-use system-contents (1.2 KB)
+GC undeleted 0 contents (0 B)
+Compacting an eligible uncompacted epoch...
+Advancing epoch markers...
+Attempting to compact a range of epoch indexes ...
+Cleaning up unneeded epoch markers...
+Cleaning up old index blobs which have already been compacted...
+Cleaned up 0 logs.
+Finished full maintenance.
+
+$ kopia snapshot list
+root@htch-runtime:/home/hatch/workspace/kopia-lab-work/docs-src/documents
+  2026-10-29 18:03:04 UTC k774ee3ab55fb879bce7f34bb3c854730 234.9 KB drwxrwx--- files:5 dirs:4 (latest-1,hourly-1,daily-1,weekly-1,monthly-1,annual-1)
+
+$ du -sh $LAB/repo
+284K	/home/hatch/workspace/kopia-lab-work/repo
+
+$ kopia content stats (summary lines)
+Count: 11
+Total Bytes: 238.1 KB
+Total Packed: 237.4 KB (compression 0.3%)
+By Method:
+  (uncompressed)         count: 7 size: 236 KB
+  zstd-fastest           count: 4 size: 2.1 KB packed: 1.2 KB compression: 41.1%
+Average: 21.6 KB
+Histogram:
+
+        0 between 0 B and 10 B (total 0 B)
+        0 between 10 B and 100 B (total 0 B)
+        9 between 100 B and 1 KB (total 3 KB)

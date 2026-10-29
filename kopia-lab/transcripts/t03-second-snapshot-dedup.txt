@@ -1,0 +1,19 @@
+# Changes since snapshot 1: one line appended to the letter,
+# and big-repeated.txt copied to big-repeated-copy.txt (identical bytes).
+
+$ kopia snapshot create $LAB/docs-src/documents
+Snapshotting root@htch-runtime:/home/hatch/workspace/kopia-lab-work/docs-src/documents ...
+Created snapshot with root k939275ac4b700b7dae6c7c84227cb139 and ID fe5951304bd698875b3b29314299a631 in 0s
+
+$ kopia snapshot list
+root@htch-runtime:/home/hatch/workspace/kopia-lab-work/docs-src/documents
+  2026-10-29 18:03:04 UTC k774ee3ab55fb879bce7f34bb3c854730 234.9 KB drwxrwx--- files:5 dirs:4 (latest-2)
+  2026-10-29 18:03:15 UTC k939275ac4b700b7dae6c7c84227cb139 269.3 KB drwxrwx--- files:6 dirs:4 (latest-1,hourly-1,daily-1,weekly-1,monthly-1,annual-1)
+
+$ du -sh $LAB/repo   (was 284K after snapshot 1)
+308K	/home/hatch/workspace/kopia-lab-work/repo
+
+$ kopia content stats | head -3   (count was 11 after snapshot 1)
+Count: 16
+Total Bytes: 240.8 KB
+Total Packed: 239.2 KB (compression 0.6%)

@@ -1,0 +1,71 @@
+$ kopia repository create filesystem --path $LAB/repo
+Initializing repository with:
+  block hash:          BLAKE2B-256-128
+  encryption:          AES256-GCM-HMAC-SHA256
+  key derivation:      scrypt-65536-8-1
+  splitter:            DYNAMIC-4M-BUZHASH
+Connected to repository.
+
+NOTICE: Kopia will check for updates on GitHub every 7 days, starting 24 hours after first use.
+To disable this behavior, set environment variable KOPIA_CHECK_FOR_UPDATES=false
+Alternatively you can remove the file "/home/hatch/workspace/kopia-lab-work/home/.config/kopia/repository.config.update-info.json".
+
+Retention:
+  Annual snapshots:                 3   (defined for this target)
+  Monthly snapshots:               24   (defined for this target)
+  Weekly snapshots:                 4   (defined for this target)
+  Daily snapshots:                  7   (defined for this target)
+  Hourly snapshots:                48   (defined for this target)
+  Latest snapshots:                10   (defined for this target)
+  Ignore identical snapshots:   false   (defined for this target)
+Compression disabled.
+
+To find more information about default policy run 'kopia policy get'.
+To change the policy use 'kopia policy set' command.
+
+NOTE: Kopia will perform quick maintenance of the repository automatically every 1h0m0s
+and full maintenance every 24h0m0s when running as root@htch-runtime.
+
+See https://kopia.io/docs/advanced/maintenance/ for more information.
+
+NOTE: To validate that your provider is compatible with Kopia, please run:
+
+$ kopia repository validate-provider
+
+
+$ kopia repository status
+Config file:         /home/hatch/workspace/kopia-lab-work/home/.config/kopia/repository.config
+
+Description:         Repository in Filesystem: /home/hatch/workspace/kopia-lab-work/repo
+Hostname:            htch-runtime
+Username:            root
+Read-only:           false
+Format blob cache:   15m0s
+
+Storage type:        filesystem
+Storage capacity:    214.7 GB
+Storage available:   192.1 GB
+Storage config:      {
+                       "path": "/home/hatch/workspace/kopia-lab-work/repo",
+                       "fileMode": 384,
+                       "dirMode": 448,
+                       "dirShards": null
+                     }
+
+Unique ID:           db671cf38c75ca5af23eedfd762af313462ea29d4cd20a6ce051604e0645dbe1
+Hash:                BLAKE2B-256-128
+Encryption:          AES256-GCM-HMAC-SHA256
+Splitter:            DYNAMIC-4M-BUZHASH
+Format version:      3
+Content compression: true
+Password changes:    true
+Max pack length:     21 MB
+Index Format:        v2
+
+Epoch Manager:       enabled
+Current Epoch: 0
+
+Epoch refresh frequency: 20m0s
+Epoch advance on:        20 blobs or 10.5 MB, minimum 24h0m0s
+Epoch cleanup margin:    4h0m0s
+Epoch range-compaction every: 7 epochs

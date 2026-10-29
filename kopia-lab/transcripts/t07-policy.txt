@@ -1,0 +1,36 @@
+$ kopia policy show $LAB/docs-src/documents   (before: inherited defaults)
+Policy for root@htch-runtime:/home/hatch/workspace/kopia-lab-work/docs-src/documents:
+
+Retention:
+  Annual snapshots:                        3   inherited from (global)
+  Monthly snapshots:                      24   inherited from (global)
+  Weekly snapshots:                        4   inherited from (global)
+  Daily snapshots:                         7   inherited from (global)
+  Hourly snapshots:                       48   inherited from (global)
+  Latest snapshots:                       10   inherited from (global)
+  Ignore identical snapshots:          false   inherited from (global)
+
+Files policy:
+  Ignore cache directories:             true   inherited from (global)
+  No ignore rules:
+
+$ kopia policy set --keep-daily=14 --keep-weekly=8 $LAB/docs-src/documents
+Setting policy for root@htch-runtime:/home/hatch/workspace/kopia-lab-work/docs-src/documents
+ - setting "number of weekly backups to keep" to 8.
+ - setting "number of daily backups to keep" to 14.
+
+$ kopia policy show $LAB/docs-src/documents   (after)
+Policy for root@htch-runtime:/home/hatch/workspace/kopia-lab-work/docs-src/documents:
+
+Retention:
+  Annual snapshots:                        3   inherited from (global)
+  Monthly snapshots:                      24   inherited from (global)
+  Weekly snapshots:                        8   (defined for this target)
+  Daily snapshots:                        14   (defined for this target)
+  Hourly snapshots:                       48   inherited from (global)
+  Latest snapshots:                       10   inherited from (global)
+  Ignore identical snapshots:          false   inherited from (global)
+
+Files policy:
+  Ignore cache directories:             true   inherited from (global)
+  No ignore rules:

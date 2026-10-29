@@ -1,0 +1,31 @@
+$ kopia server start --address=127.0.0.1:51515 --insecure --server-username=labuser --server-password=... (background)
+# first lines of the server log:
+
+Server will allow connections from users whose accounts are stored in the repository.
+User accounts can be added using 'kopia server user add'.
+
+SERVER ADDRESS: http://127.0.0.1:51515
+Open the address above in a web browser to use the UI.
+
+$ curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:51515/
+401
+
+$ curl -s http://127.0.0.1:51515/ | grep -o "<title>[^<]*</title>"
+
+$ curl -s -u labuser:... http://127.0.0.1:51515/api/v1/sources (first 300 chars)
+Invalid or missing CSRF token.
+
+
+
+$ kopia server status
+unable to list sources: error creating request: parse "127.0.0.1:51515/api/v1/control/sources": first path segment in URL cannot contain colon
+# (server started as in the previous run; log says SERVER ADDRESS: http://127.0.0.1:51515)
+
+$ curl -s -u labuser:... -o /dev/null -w "%{http_code}" http://127.0.0.1:51515/
+200
+
+$ curl -s -u labuser:... http://127.0.0.1:51515/ | grep -o "<title>[^<]*</title>"
+<title>KopiaUI v0.23.1</title>
+
+$ kopia server status --address=http://127.0.0.1:51515 --server-username=labuser --server-password=...
+unable to list sources: 403 Forbidden: access is denied

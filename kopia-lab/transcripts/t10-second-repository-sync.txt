@@ -1,0 +1,23 @@
+# Note: the destination folder must exist before sync-to will use it.
+$ mkdir -p $LAB/repo-copy
+$ kopia repository sync-to filesystem --path $LAB/repo-copy
+Synchronizing repositories:
+  Source:      Filesystem: /home/hatch/workspace/kopia-lab-work/repo
+  Destination: Filesystem: /home/hatch/workspace/kopia-lab-work/repo-copy
+NOTE: By default no BLOBs are deleted, pass --delete to allow it.
+Looking for BLOBs to synchronize...
+  Found 0 BLOBs to delete (0 B), 1 in sync (1.1 KB)
+Copying...
+
+$ du -sh $LAB/repo $LAB/repo-copy
+324K	/home/hatch/workspace/kopia-lab-work/repo
+328K	/home/hatch/workspace/kopia-lab-work/repo-copy
+
+# Connect to the copy instead (separate config file) and list snapshots:
+$ kopia --config-file=$LAB/copy.config repository connect filesystem --path $LAB/repo-copy
+Connected to repository.
+
+$ kopia --config-file=$LAB/copy.config snapshot list
+root@htch-runtime:/home/hatch/workspace/kopia-lab-work/docs-src/documents
+  2026-10-29 18:03:04 UTC k774ee3ab55fb879bce7f34bb3c854730 234.9 KB drwxrwx--- files:5 dirs:4 (latest-2)
+  2026-10-29 18:03:15 UTC k939275ac4b700b7dae6c7c84227cb139 269.3 KB drwxrwx--- files:6 dirs:4 (latest-1,hourly-1,daily-1,weekly-1,monthly-1,annual-1)

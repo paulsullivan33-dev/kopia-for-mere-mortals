@@ -1,0 +1,11 @@
+$ ls /dev/fuse
+ls: cannot access '/dev/fuse': No such file or directory
+
+$ kopia mount k939275ac4b700b7dae6c7c84227cb139 $LAB/mnt
+/usr/bin/fusermount3: fuse device not found, try 'modprobe fuse' first
+mount error: mounting error: fusermount exited with code 256
+
+
+# The sandbox has no FUSE device, so mounting cannot run here.
+# On a normal Linux machine the same command mounts the snapshot
+# as a read-only folder at the given path until you unmount it.

@@ -1,0 +1,24 @@
+$ kopia ls k939275ac4b700b7dae6c7c84227cb139
+letters
+notes
+projects
+
+$ kopia ls k939275ac4b700b7dae6c7c84227cb139/notes
+shopping-and-ideas.txt
+
+$ kopia restore k939275ac4b700b7dae6c7c84227cb139/notes/shopping-and-ideas.txt $LAB/single/shopping-and-ideas.txt
+Restoring to local filesystem (/home/hatch/workspace/kopia-lab-work/single/shopping-and-ideas.txt) with parallelism=8...
+Restored 1 files, 0 directories and 0 symbolic links (164 B).
+
+
+$ cat $LAB/single/shopping-and-ideas.txt
+Notes for the week
+- Order more graph paper and printer ink
+- The marker for this file is MARKER-QUUX-7391-the-velvet-ledger
+- Try the new bread recipe on Saturday
+
+$ kopia show k939275ac4b700b7dae6c7c84227cb139/projects/reading-list.txt
+Reading list
+1. A field guide to clouds
+2. The history of the bicycle
+3. Practical woodworking, volume 2

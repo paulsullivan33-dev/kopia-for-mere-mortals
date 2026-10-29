@@ -1,0 +1,39 @@
+$ kopia snapshot verify --sources root@htch-runtime:$LAB/docs-src/documents
+Listing blobs...
+Listed 17 blobs.
+Processed 0 objects (0 B). Read 0 files (0 B).
+Finished processing 13 objects (235.1 KB). Read 0 files (0 B).
+verify exit code: 0
+
+$ kopia maintenance info
+Owner: root@htch-runtime
+Quick Cycle:
+  scheduled: true
+  interval: 1h0m0s
+  next run: 2026-10-29 19:03:04 UTC (in 59m18s)
+Full Cycle:
+  scheduled: true
+  interval: 24h0m0s
+  next run: 2026-10-30 18:03:04 UTC (in 23h59m18s)
+Log Retention:
+  max count:       10000
+  max age of logs: 720h0m0s
+  max total size:  1.1 GB
+Object Lock Extension: disabled
+Recent Maintenance Runs:
+  generate-epoch-range-index:
+    2026-10-29 18:03:04 UTC (0s) SUCCESS: Generated a range checkpoint from epoch 0 to 0 inclusive
+  snapshot-gc:
+    2026-10-29 18:03:04 UTC (0s) SUCCESS: Found 0(0) unreferenced contents and marked 0(0) for deletion. Found 9(236224) in-use contents and 2(1198) in-use system contents. Retained 0(0) recent contents. Recovered 0(0) contents
+  advance-epoch:
+    2026-10-29 18:03:04 UTC (0s) SUCCESS: Stayed at epoch 0
+  cleanup-epoch-markers:
+    2026-10-29 18:03:04 UTC (0s) SUCCESS: Cleaned up 0 epoch markers and 0 deletion watermarks
+  cleanup-logs:
+    2026-10-29 18:03:04 UTC (0s) SUCCESS: Found 0(0 B) logs blobs for deletion and deleted 0(0 B) of them. Retained 1(0.9 KB) log blobs.
+  compact-single-epoch:
+    2026-10-29 18:03:04 UTC (0s) SUCCESS: Compacted 0(0 B) index blobs for epoch 0
+  delete-superseded-epoch-indexes:
+    2026-10-29 18:03:04 UTC (0s) SUCCESS: Cleaned up 0(0 B) superseded index blobs, max replacement time 2026-10-29 14:03:04.29271093 +0000 UTC
+  full-rewrite-contents:
+    2026-10-29 18:03:04 UTC (0s) SUCCESS: Found 0(0 B) contents to rewrite and rewrote 0(0 B). Retained 6(2.4 KB) contents from rewrite

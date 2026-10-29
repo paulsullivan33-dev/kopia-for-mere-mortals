@@ -1,0 +1,19 @@
+$ kopia restore k939275ac4b700b7dae6c7c84227cb139 $LAB/restored   (snapshot 2)
+Restoring to local filesystem (/home/hatch/workspace/kopia-lab-work/restored) with parallelism=8...
+Restored 6 files, 4 directories and 0 symbolic links (269.3 KB).
+
+
+$ diff -r $LAB/docs-src/documents $LAB/restored && echo IDENTICAL
+IDENTICAL
+
+$ kopia restore k774ee3ab55fb879bce7f34bb3c854730 $LAB/restored-v1   (snapshot 1)
+Restoring to local filesystem (/home/hatch/workspace/kopia-lab-work/restored-v1) with parallelism=8...
+Restored 5 files, 4 directories and 0 symbolic links (234.9 KB).
+
+
+$ diff -r $LAB/docs-src/documents $LAB/restored-v1   (expected: only the changes made after snapshot 1)
+diff -r /home/hatch/workspace/kopia-lab-work/docs-src/documents/letters/letter-to-a-friend.txt /home/hatch/workspace/kopia-lab-work/restored-v1/letters/letter-to-a-friend.txt
+10d9
+< P.S. The fence is fixed now, and the gate swings shut on its own.
+Only in /home/hatch/workspace/kopia-lab-work/docs-src/documents/projects: big-repeated-copy.txt
+diff exit code: 1 (1 = differences found, as expected)
